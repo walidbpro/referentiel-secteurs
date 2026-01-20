@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LACOSTE | Salesforce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Salesforce Sans", Arial, sans-serif;
+            font-size: 13px;
+            color: #080707;
+            background: #f3f2f2;
+            line-height: 1.5;
+        }
+
+        /* POC Ribbon Banner */
+        .poc-ribbon {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            z-index: 10001;
+            pointer-events: none;
+        }
+
+        .poc-ribbon span {
+            position: absolute;
+            display: block;
+            width: 150px;
+            padding: 5px 0;
+            background: #e53935;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            left: -40px;
+            top: 20px;
+            transform: rotate(-45deg);
+        }
+
+        /* ========== GLOBAL HEADER ========== */
+        .global-header {
+            background: #032d60;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .waffle-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .waffle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 4px);
+            gap: 2px;
+        }
+
+        .waffle-dot {
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 1px;
+        }
+
+        .app-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .app-logo img {
+            height: 20px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            margin-left: 16px;
+            flex: 1;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            font-size: 12px;
+            padding: 0 10px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-link.active {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .nav-arrow {
+            font-size: 8px;
+            margin-left: 4px;
+            opacity: 0.7;
+        }
+
+        .header-search {
+            margin: 0 16px;
+            position: relative;
+        }
+
+        .header-search input {
+            width: 200px;
+            padding: 5px 10px 5px 28px;
+            border: none;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-size: 12px;
+        }
+
+        .header-search input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .header-search::before {
+            content: "🔍";
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.85);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .header-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .user-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* ========== RECORD PAGE ========== */
+        .page-container {
+            margin-top: 40px;
+            background: #f3f2f2;
+            min-height: calc(100vh - 40px);
+        }
+
+        /* Record Header */
+        .record-header {
+            background: white;
+            border-bottom: 1px solid #dddbda;
+            padding: 12px 16px 0;
+        }
+
+        .record-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .record-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .record-icon {
+            width: 40px;
+            height: 40px;
+            background: #7b83eb;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .record-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .record-type-label {
+            font-size: 11px;
+            color: #706e6b;
+        }
+
+        .record-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .record-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #080707;
+        }
+
+        .status-badge {
+            background: #04844b;
+            color: white;
+            font-size: 11px;
+            padding: 1px 8px;
+            border-radius: 3px;
+            font-weight: 400;
+        }
+
+        .record-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid #dddbda;
+            background: white;
+            color: #0070d2;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: #f3f2f2;
+        }
+
+        .btn-brand {
+            background: #0070d2;
+            color: white;
+            border-color: #0070d2;
+        }
+
+        .btn-brand:hover {
+            background: #005fb2;
+        }
+
+        .btn-destructive {
+            color: #c23934;
+        }
+
+        .btn-icon {
+            background: none;
+            border: 1px solid #dddbda;
+            border-radius: 4px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #706e6b;
+        }
+
+        /* Highlights */
+        .record-highlights {
+            display: flex;
+            gap: 24px;
+            padding: 12px 0;
+            margin-left: 52px;
+            font-size: 12px;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 80px;
+        }
+
+        .highlight-label {
+            color: #706e6b;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .highlight-value {
+            color: #080707;
+            font-size: 12px;
+        }
+
+        .highlight-value a {
+            color: #0070d2;
+            text-decoration: none;
+        }
+
+        .highlight-value a:hover {
+            text-decoration: underline;
+        }
+
+        .external-icon {
+            font-size: 9px;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+
+        .flag-img {
+            width: 24px;
+            height: 16px;
+            border: 1px solid #ddd;
+        }
+
+        /* Tabs */
+        .record-tabs {
+            display: flex;
+            margin-left: 52px;
+            border-bottom: none;
+        }
+
+        .tab-item {
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #0070d2;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            text-decoration: none;
+        }
+
+        .tab-item:hover {
+            background: rgba(0, 112, 210, 0.05);
+        }
+
+        .tab-item.active {
+            border-bottom-color: #0070d2;
+            font-weight: 500;
+        }
+
+        /* ========== MAIN LAYOUT ========== */
+        .main-layout {
+            display: flex;
+            padding: 12px;
+            gap: 12px;
+            max-width: 100%;
+        }
+
+        .main-column {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sidebar-column {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border: 1px solid #dddbda;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .card-header {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: 1px solid #dddbda;
+        }
+
+        .card-header:hover {
+            background: #f3f2f2;
+        }
+
+        .chevron {
+            color: #0070d2;
+            font-size: 10px;
+            margin-right: 8px;
+            transition: transform 0.2s;
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #080707;
+        }
+
+        .card-edit {
+            margin-left: auto;
+            color: #706e6b;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .card-body {
+            padding: 12px;
+        }
+
+        /* Field Layout */
+        .field-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .field-row {
+            display: contents;
+        }
+
+        .field {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f3f2f2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .field:hover {
+            background: #f9f9f9;
+        }
+
+        .field-content {
+            flex: 1;
+        }
+
+        .field-label {
+            font-size: 11px;
+            color: #706e6b;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .info-icon {
+            color: #0070d2;
+            font-size: 10px;
+            cursor: help;
+        }
+
+        .field-value {
+            font-size: 13px;
+            color: #080707;
+        }
+
+        .field-value.empty {
+            color: #969492;
+        }
+
+        .field-value a {
+            color: #0070d2;
+            text-decoration: none;
+        }
+
+        .field-edit {
+            color: #969492;
+            font-size: 11px;
+            cursor: pointer;
+            opacity: 0;
+            padding: 2px;
+        }
+
+        .field:hover .field-edit {
+            opacity: 1;
+        }
+
+        /* Checkbox */
+        .checkbox {
+            width: 14px;
+            height: 14px;
+            border: 1px solid #dddbda;
+            border-radius: 2px;
+            background: white;
+        }
+
+        /* Description Card */
+        .description-content {
+            padding: 8px 12px;
+        }
+
+        .description-label {
+            font-size: 11px;
+            color: #706e6b;
+            margin-bottom: 4px;
+        }
+
+        .description-text {
+            font-size: 13px;
+            color: #080707;
+            margin-bottom: 12px;
+        }
+
+        /* Address with Map */
+        .address-field {
+            padding: 8px 12px;
+        }
+
+        .address-text {
+            color: #0070d2;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .address-text a {
+            color: #0070d2;
+            text-decoration: none;
+            display: block;
+        }
+
+        .map-thumbnail {
+            width: 120px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            background: #e8f5e9;
+            border: 1px solid #dddbda;
+        }
+
+        .map-inner {
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 49%, #c5e1a5 49%, #c5e1a5 51%, transparent 51%),
+                linear-gradient(0deg, transparent 49%, #c5e1a5 49%, #c5e1a5 51%, transparent 51%),
+                linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            position: relative;
+        }
+
+        .map-marker {
+            position: absolute;
+            top: 35%;
+            left: 55%;
+            transform: translate(-50%, -100%);
+            font-size: 20px;
+            color: #ea4335;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .map-circle {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4285f4;
+            border-radius: 50%;
+            background: rgba(66, 133, 244, 0.2);
+        }
+
+        /* User with Avatar */
+        .user-field {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .user-mini-avatar {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0070d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar-card {
+            background: white;
+            border: 1px solid #dddbda;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-header {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #dddbda;
+        }
+
+        .sidebar-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #080707;
+        }
+
+        .sidebar-icon {
+            color: #ff5d2d;
+            font-size: 14px;
+        }
+
+        .expand-icon {
+            color: #706e6b;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        /* Activity Panel */
+        .activity-header {
+            display: flex;
+            border-bottom: 1px solid #dddbda;
+        }
+
+        .activity-tab {
+            flex: 1;
+            padding: 10px 8px;
+            text-align: center;
+            font-size: 12px;
+            color: #706e6b;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .activity-tab:hover {
+            background: #f3f2f2;
+        }
+
+        .activity-tab.active {
+            color: #0070d2;
+            border-bottom-color: #0070d2;
+            font-weight: 500;
+        }
+
+        .activity-buttons {
+            display: flex;
+            padding: 8px 12px;
+            gap: 4px;
+            border-bottom: 1px solid #dddbda;
+        }
+
+        .activity-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid #dddbda;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 11px;
+            color: #706e6b;
+        }
+
+        .activity-btn.active {
+            background: #0070d2;
+            border-color: #0070d2;
+            color: white;
+        }
+
+        .activity-btn.green {
+            background: #04844b;
+            border-color: #04844b;
+            color: white;
+        }
+
+        .activity-btn.yellow {
+            background: #ffb75d;
+            border-color: #ffb75d;
+            color: white;
+        }
+
+        .activity-btn.blue {
+            background: #1b96ff;
+            border-color: #1b96ff;
+            color: white;
+        }
+
+        .activity-filter {
+            padding: 8px 12px;
+            font-size: 11px;
+            color: #706e6b;
+            border-bottom: 1px solid #dddbda;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .filter-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-links a {
+            color: #0070d2;
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        .filter-links span {
+            color: #969492;
+        }
+
+        .activity-section {
+            padding: 8px 12px;
+        }
+
+        .section-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #0070d2;
+            font-size: 12px;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+
+        .activity-empty {
+            text-align: center;
+            padding: 16px;
+        }
+
+        .empty-title {
+            font-size: 12px;
+            color: #080707;
+            margin-bottom: 4px;
+        }
+
+        .empty-text {
+            font-size: 11px;
+            color: #969492;
+        }
+
+        .past-activity {
+            border-top: 1px solid #dddbda;
+            padding: 12px;
+            text-align: center;
+            color: #969492;
+            font-size: 11px;
+        }
+
+        /* Lightning bolt icon */
+        .lightning {
+            color: #0070d2;
+            font-size: 10px;
+        }
+
+        /* Picklist styles */
+        .field-picklist {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #0070d2;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #080707;
+            background: white;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 0 0 1px #0070d2;
+        }
+
+        .field-picklist:focus {
+            box-shadow: 0 0 3px #0070d2;
+        }
+
+        .field.editing {
+            background: #f3f2f2;
+        }
+
+        .field.editing .field-edit {
+            opacity: 1;
+            color: #0070d2;
+        }
+    </style>
+</head>
+<body>
+    <!-- POC Ribbon Banner -->
+    <div class="poc-ribbon"><span>POC</span></div>
+
+    <!-- Global Header -->
+    <header class="global-header">
+        <div class="header-left">
+            <button class="waffle-btn">
+                <div class="waffle-grid">
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                    <div class="waffle-dot"></div>
+                </div>
+            </button>
+            <div class="app-logo">Freelance.com</div>
+        </div>
+        <nav class="header-nav">
+            <a href="#" class="nav-link">Accueil</a>
+            <a href="#" class="nav-link">Gestion des commandes</a>
+            <a href="#" class="nav-link">Requêtes</a>
+            <a href="#" class="nav-link">Rapports <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Opportunités <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Contrats <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link active">Comptes <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Contacts <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Tableaux de bord <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Chatter</a>
+            <a href="#" class="nav-link">DDA <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Factures <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Commandes (ERP) <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Calendrier <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Recherche de ressources</a>
+            <a href="#" class="nav-link">Reportings <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Fichiers <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Groupes <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Leads <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Réseau</a>
+            <a href="#" class="nav-link">Phases du contrat <span class="nav-arrow">▼</span></a>
+            <a href="#" class="nav-link">Mapping Marchés Rapports <span class="nav-arrow">▼</span></a>
+        </nav>
+        <div class="header-search">
+            <input type="text" placeholder="Rechercher...">
+        </div>
+        <div class="header-right">
+            <button class="header-btn">+</button>
+            <button class="header-btn">▼</button>
+            <button class="header-btn">🔔</button>
+            <button class="header-btn">❓</button>
+            <button class="header-btn">⚙</button>
+            <div class="user-avatar">W</div>
+        </div>
+    </header>
+
+    <!-- Page Container -->
+    <div class="page-container">
+        <!-- Record Header -->
+        <div class="record-header">
+            <div class="record-header-content">
+                <div class="record-info">
+                    <div class="record-icon">🏢</div>
+                    <div class="record-details">
+                        <span class="record-type-label">Compte</span>
+                        <div class="record-title-row">
+                            <span class="record-name">LACOSTE</span>
+                            <span class="status-badge">Client</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="record-actions">
+                    <button class="btn-icon">🔍</button>
+                    <button class="btn">+ S'abonner</button>
+                    <button class="btn btn-brand">Modifier</button>
+                    <button class="btn">⚡ Mise à jour Pappers</button>
+                    <button class="btn">Nouvelle opportunité prestation</button>
+                    <button class="btn">Nouvel Appel d'offre</button>
+                    <button class="btn">Créer/Modifier le compte ERP</button>
+                    <button class="btn btn-destructive">Supprimer</button>
+                </div>
+            </div>
+            
+            <div class="record-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-label">Type de compte</span>
+                    <span class="highlight-value">Client</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Téléphone</span>
+                    <span class="highlight-value">+33 1 44 82 69 00</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Site Web</span>
+                    <span class="highlight-value"><a href="#">www.lacoste.com</a></span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Périmètre commercial</span>
+                    <span class="highlight-value">Privé</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Propriétaire du compte</span>
+                    <span class="highlight-value"><a href="#">Portail Connecteed</a> <span class="external-icon">↗</span></span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Etat</span>
+                    <span class="highlight-value">
+                        <svg class="flag-img" viewBox="0 0 24 16">
+                            <rect width="24" height="16" fill="#22c55e"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="record-tabs">
+                <a href="#" class="tab-item active">Détails</a>
+                <a href="#" class="tab-item">Direction</a>
+                <a href="#" class="tab-item">Contacts</a>
+                <a href="#" class="tab-item">Opportunités</a>
+                <a href="#" class="tab-item">Contrats</a>
+                <a href="#" class="tab-item">Rapports</a>
+                <a href="#" class="tab-item">ERP</a>
+                <a href="#" class="tab-item">Autour</a>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Main Column -->
+            <div class="main-column">
+                <!-- Informations générales -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="chevron">▼</span>
+                        <span class="card-title">Informations générales</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="field-section">
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Nom du compte</div>
+                                    <div class="field-value">LACOSTE</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">N° de Siret</div>
+                                    <div class="field-value">54201100600077</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Sigle <span class="info-icon">ⓘ</span></div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">TVA Intracommunautaire</div>
+                                    <div class="field-value">FR85542011606</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Compte principal</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Chiffre d'affaires annuel</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field" id="secteur-field">
+                                <div class="field-content">
+                                    <div class="field-label">Secteur d'activité</div>
+                                    <div class="field-value" id="secteur-display">
+                                        <span id="secteur-value">Distribution & Commerce</span>
+                                        <select id="secteur-select" class="field-picklist" style="display: none;">
+                                            <option value="">--Aucun--</option>
+                                            <option value="Action sociale">Action sociale</option>
+                                            <option value="Administrations publiques">Administrations publiques</option>
+                                            <option value="Aérospatial">Aérospatial</option>
+                                            <option value="Agroalimentaire">Agroalimentaire</option>
+                                            <option value="Assurance">Assurance</option>
+                                            <option value="Banque">Banque</option>
+                                            <option value="BTP & Construction">BTP & Construction</option>
+                                            <option value="Comptabilité">Comptabilité</option>
+                                            <option value="Conseil & Audit">Conseil & Audit</option>
+                                            <option value="Culture & Loisirs">Culture & Loisirs</option>
+                                            <option value="Défense">Défense</option>
+                                            <option value="Distribution & Commerce" selected>Distribution & Commerce</option>
+                                            <option value="E-commerce">E-commerce</option>
+                                            <option value="Édition">Édition</option>
+                                            <option value="Énergie">Énergie</option>
+                                            <option value="Enseignement & Formation">Enseignement & Formation</option>
+                                            <option value="Évènementiel">Évènementiel</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="Immobilier">Immobilier</option>
+                                            <option value="Industrie">Industrie</option>
+                                            <option value="Informatique & Digital">Informatique & Digital</option>
+                                            <option value="Ingénierie & R&D">Ingénierie & R&D</option>
+                                            <option value="Juridique">Juridique</option>
+                                            <option value="Logistique">Logistique</option>
+                                            <option value="Luxe">Luxe</option>
+                                            <option value="Média & Communication">Média & Communication</option>
+                                            <option value="Mode & Cosmétique">Mode & Cosmétique</option>
+                                            <option value="Pharma & Biotechnologies">Pharma & Biotechnologies</option>
+                                            <option value="Restauration">Restauration</option>
+                                            <option value="RH / Recrutement">RH / Recrutement</option>
+                                            <option value="RSE / Développement durable">RSE / Développement durable</option>
+                                            <option value="Santé">Santé</option>
+                                            <option value="Télécommunications">Télécommunications</option>
+                                            <option value="Tourisme & Hôtellerie">Tourisme & Hôtellerie</option>
+                                            <option value="Transport">Transport</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <span class="field-edit" id="secteur-edit-btn" onclick="toggleSecteurEdit()">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Employés</div>
+                                    <div class="field-value">30</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Périmètre commercial</div>
+                                    <div class="field-value">Privé</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Segmentation client</div>
+                                    <div class="field-value">T3</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Privé</div>
+                                    <div class="field-value"><div class="checkbox"></div></div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Type de structure</div>
+                                    <div class="field-value">Grand compte</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Présentation de la société -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="chevron">▼</span>
+                        <span class="card-title">Présentation de la société</span>
+                        <span class="card-edit">✏️</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="description-content">
+                            <div class="description-label">Description</div>
+                            <div class="description-text">Compte créé par Connecteed avec le nom LACOSTE et l'identifiant 54201180600077</div>
+                            <div class="description-label">Description à compléter</div>
+                            <div class="description-text" style="color: #969492;">—</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordonnées -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="chevron">▼</span>
+                        <span class="card-title">Coordonnées</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="field-section">
+                            <div class="field" style="grid-row: span 2;">
+                                <div class="field-content">
+                                    <div class="field-label">Adresse (dégradation)</div>
+                                    <div class="address-text">
+                                        <a href="#">31 BOULEVARD DE MONTMORENCY, 31-37</a>
+                                        <a href="#">75016 PARIS</a>
+                                        <span style="color: #080707;">France</span>
+                                    </div>
+                                    <div class="map-thumbnail">
+                                        <div class="map-inner">
+                                            <div class="map-circle"></div>
+                                            <div class="map-marker">📍</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Téléphone <span class="info-icon">ⓘ</span></div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Site Web</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informations Commerce -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="chevron">▼</span>
+                        <span class="card-title">Informations Commerce</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="field-section">
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Est tête de hierarchie <span class="info-icon">ⓘ</span></div>
+                                    <div class="field-value"><div class="checkbox"></div></div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Enjeux IT</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Enjeux métiers</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Nombre de prestas Inspe</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field" style="grid-column: 1;">
+                                <div class="field-content">
+                                    <div class="field-label">Commentaires Inspe</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Données Insee -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="chevron">▼</span>
+                        <span class="card-title">Données Insee</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="field-section">
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Dénomination complète Insee</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Code NAF</div>
+                                    <div class="field-value">7010Z</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Activité Principale</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Insee Actif</div>
+                                    <div class="field-value"><div class="checkbox"></div></div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Catégorie juridique</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Insee radié RCS</div>
+                                    <div class="field-value"><div class="checkbox"></div></div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Siège social</div>
+                                    <div class="field-value"><div class="checkbox"></div></div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Insee Siret Invalido</div>
+                                    <div class="field-value"><div class="checkbox"></div></div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Précédent siret <span class="info-icon">ⓘ</span></div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Date de création société</div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Date de transfert du précédent siret <span class="info-icon">ⓘ</span></div>
+                                    <div class="field-value empty">—</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informations système -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="chevron">▼</span>
+                        <span class="card-title">Informations système</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div class="field-section">
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Type d'enregistrement du compte</div>
+                                    <div class="field-value">Client <span class="lightning">⚡</span></div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Créé par</div>
+                                    <div class="field-value">
+                                        <span class="user-field">
+                                            <span class="user-mini-avatar">P</span>
+                                            <a href="#">Portail Connecteed</a>
+                                        </span>, 23/12/2024 09:26
+                                    </div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">External_ID</div>
+                                    <div class="field-value">CP1-0000084183</div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                            <div class="field">
+                                <div class="field-content">
+                                    <div class="field-label">Dernière modification par</div>
+                                    <div class="field-value">
+                                        <span class="user-field">
+                                            <span class="user-mini-avatar">L</span>
+                                            <a href="#">Ludovic MAQUET</a>
+                                        </span>, 18/12/2025 14:58
+                                    </div>
+                                </div>
+                                <span class="field-edit">✏️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Column -->
+            <div class="sidebar-column">
+                <!-- Équipe du compte -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <div class="sidebar-title">
+                            <span class="sidebar-icon">👥</span>
+                            Équipe du compte (0)
+                        </div>
+                        <span class="expand-icon">⤢</span>
+                    </div>
+                </div>
+
+                <!-- Activity Panel -->
+                <div class="sidebar-card">
+                    <div class="activity-header">
+                        <div class="activity-tab active">Activité</div>
+                        <div class="activity-tab">Chatter</div>
+                        <div class="activity-tab">Fichiers</div>
+                        <div class="activity-tab">Historique</div>
+                    </div>
+                    <div class="activity-buttons">
+                        <button class="activity-btn active">🕐</button>
+                        <button class="activity-btn">→</button>
+                        <button class="activity-btn green">📞</button>
+                        <button class="activity-btn">→</button>
+                        <button class="activity-btn yellow">✉️</button>
+                        <button class="activity-btn">→</button>
+                        <button class="activity-btn blue">📅</button>
+                        <button class="activity-btn">→</button>
+                    </div>
+                    <div class="activity-filter">
+                        <div class="filter-row">
+                            🔍 Filtre : Toutes les dates - Toutes les activités - Tous les types <span class="info-icon">ⓘ</span>
+                        </div>
+                        <div class="filter-links">
+                            <a href="#">Actualiser</a>
+                            <span>•</span>
+                            <a href="#">Agrandir tout</a>
+                            <span>•</span>
+                            <a href="#">Afficher tout</a>
+                        </div>
+                    </div>
+                    <div class="activity-section">
+                        <div class="section-toggle">
+                            <span>▼</span> À venir et passés
+                        </div>
+                        <div class="activity-empty">
+                            <div class="empty-title">Aucune activité à afficher.</div>
+                            <div class="empty-text">Commencez par envoyer un e-mail, planifier une tâche, ou une autre activité.</div>
+                        </div>
+                    </div>
+                    <div class="past-activity">
+                        Aucune activité passée. Les réunions et les tâches passées marquées comme terminées sont affichées ici.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSecteurEdit() {
+            const field = document.getElementById('secteur-field');
+            const valueSpan = document.getElementById('secteur-value');
+            const select = document.getElementById('secteur-select');
+            const editBtn = document.getElementById('secteur-edit-btn');
+            
+            if (select.style.display === 'none') {
+                // Entrer en mode édition
+                field.classList.add('editing');
+                valueSpan.style.display = 'none';
+                select.style.display = 'block';
+                select.focus();
+                
+                // Sélectionner la valeur actuelle
+                const currentValue = valueSpan.textContent;
+                for (let option of select.options) {
+                    if (option.value === currentValue || option.text === currentValue) {
+                        option.selected = true;
+                        break;
+                    }
+                }
+            } else {
+                // Sauvegarder et quitter le mode édition
+                saveSecteur();
+            }
+        }
+
+        function saveSecteur() {
+            const field = document.getElementById('secteur-field');
+            const valueSpan = document.getElementById('secteur-value');
+            const select = document.getElementById('secteur-select');
+            
+            const selectedValue = select.options[select.selectedIndex].value;
+            
+            if (selectedValue) {
+                valueSpan.textContent = selectedValue;
+                valueSpan.classList.remove('empty');
+            } else {
+                valueSpan.textContent = '—';
+                valueSpan.classList.add('empty');
+            }
+            
+            field.classList.remove('editing');
+            valueSpan.style.display = 'inline';
+            select.style.display = 'none';
+        }
+
+        // Sauvegarder quand on change la sélection
+        document.getElementById('secteur-select').addEventListener('change', function() {
+            saveSecteur();
+        });
+
+        // Sauvegarder quand on clique ailleurs
+        document.addEventListener('click', function(e) {
+            const field = document.getElementById('secteur-field');
+            const select = document.getElementById('secteur-select');
+            
+            if (select.style.display !== 'none' && !field.contains(e.target)) {
+                saveSecteur();
+            }
+        });
+
+        // Permettre de cliquer sur la valeur pour éditer
+        document.getElementById('secteur-value').addEventListener('click', function() {
+            toggleSecteurEdit();
+        });
+    </script>
+</body>
+</html>

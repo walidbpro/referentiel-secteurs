@@ -1,0 +1,2458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Référentiel Secteurs d'activité — De 16 à 36</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Charte Freelance.com */
+            --primary-blue: #0033A0;
+            --primary-blue-dark: #002266;
+            --accent-green: #00A651;
+            --accent-green-light: #00C853;
+            --accent-orange: #F57C00;
+            --accent-orange-light: #FF9800;
+            --text-black: #1a1a1a;
+            --text-gray: #666666;
+            --bg-white: #FFFFFF;
+            --bg-gray: #F5F5F5;
+            --border-gray: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-white);
+            color: var(--text-black);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--bg-white);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary-blue);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Section titles */
+        .section-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease 0.1s forwards;
+            color: var(--primary-blue);
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+        }
+
+        .highlight-green {
+            color: var(--accent-green);
+        }
+
+        .highlight-orange {
+            color: var(--accent-orange);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section 1 - Le problème */
+        #probleme {
+            background: var(--bg-white);
+            color: var(--text-black);
+        }
+
+        #probleme .section-number {
+            color: var(--accent-orange);
+        }
+
+        #probleme .section-title {
+            color: var(--primary-blue);
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .problem-card {
+            background: var(--bg-white);
+            border: 2px solid var(--accent-orange);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+            box-shadow: 0 4px 20px rgba(245, 124, 0, 0.1);
+        }
+
+        .problem-card:nth-child(1) { animation-delay: 0.2s; }
+        .problem-card:nth-child(2) { animation-delay: 0.3s; }
+        .problem-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-orange);
+        }
+
+        .problem-card .icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(245, 124, 0, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .problem-card p {
+            color: var(--text-black);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .problem-card .stat {
+            display: inline-block;
+            background: rgba(245, 124, 0, 0.1);
+            color: var(--accent-orange);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            font-weight: 700;
+        }
+
+        .alert-box {
+            background: rgba(245, 124, 0, 0.08);
+            border: 2px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+        }
+
+        .alert-box p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        /* Section 2 - Données & Marché */
+        #donnees {
+            background: var(--bg-gray);
+            color: var(--text-black);
+            min-height: auto;
+            padding: 6rem 2rem;
+        }
+
+        #donnees .section-number {
+            color: var(--primary-blue);
+        }
+
+        /* Sources Grid */
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 1024px) {
+            .sources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .source-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,51,160,0.06);
+            border: 1px solid var(--border-gray);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .source-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .source-icon {
+            font-size: 1.5rem;
+        }
+
+        .source-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .source-stat-big {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .source-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .source-details {
+            border-top: 1px solid var(--border-gray);
+            padding-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0;
+            font-size: 0.85rem;
+        }
+
+        .detail-row span:first-child {
+            color: var(--text-gray);
+        }
+
+        .detail-value {
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        .detail-value.warning-text {
+            color: var(--accent-orange);
+        }
+
+        .detail-value.danger-text {
+            color: var(--accent-orange);
+        }
+
+        .detail-value.success-text {
+            color: var(--accent-green);
+        }
+
+        .source-problem {
+            background: rgba(245, 124, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-orange);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .source-problem.critical {
+            background: rgba(245, 124, 0, 0.1);
+            color: var(--accent-orange);
+        }
+
+        .problem-icon {
+            font-size: 1rem;
+        }
+
+        /* Top 3 Section */
+        .top3-section {
+            background: var(--bg-gray);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .top3-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .top3-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0;
+            font-size: 0.8rem;
+        }
+
+        .top3-item.danger .top3-name,
+        .top3-item.danger .top3-value {
+            color: var(--accent-orange);
+        }
+
+        .top3-rank {
+            width: 18px;
+            height: 18px;
+            background: var(--primary-blue);
+            color: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .top3-item.danger .top3-rank {
+            background: var(--accent-orange);
+        }
+
+        .top3-name {
+            flex: 1;
+            color: var(--text-black);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .top3-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+        }
+
+        /* Problems Summary */
+        .problems-summary {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-gray);
+        }
+
+        .problems-summary h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .problems-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .problem-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(245, 124, 0, 0.08);
+            border: 1px solid rgba(245, 124, 0, 0.25);
+            color: var(--accent-orange);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .tag-icon {
+            font-size: 0.9rem;
+        }
+
+        /* Benchmark Section */
+        .benchmark-section {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-gray);
+        }
+
+        .benchmark-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .benchmark-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .benchmark-item {
+            display: grid;
+            grid-template-columns: 150px 1fr 50px;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .benchmark-item {
+                grid-template-columns: 100px 1fr 40px;
+            }
+        }
+
+        .benchmark-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-black);
+        }
+
+        .benchmark-bar-container {
+            height: 32px;
+            background: var(--border-gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .benchmark-bar {
+            height: 100%;
+            background: var(--text-gray);
+            border-radius: 8px;
+            transition: width 1s ease;
+        }
+
+        .benchmark-bar.reco {
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-light));
+        }
+
+        .benchmark-bar.channel {
+            background: var(--accent-orange);
+        }
+
+        .benchmark-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-black);
+            text-align: right;
+        }
+
+        .highlight-bar .benchmark-label {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .highlight-bar .benchmark-value {
+            color: var(--accent-green);
+        }
+
+        .danger-bar .benchmark-label {
+            color: var(--accent-orange);
+        }
+
+        .danger-bar .benchmark-value {
+            color: var(--accent-orange);
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .market-banner {
+            background: var(--primary-blue);
+            color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.6s forwards;
+        }
+
+        .market-banner p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .market-banner strong {
+            color: var(--accent-green-light);
+        }
+
+        /* Section 3 - Comparaison */
+        #comparaison {
+            background: var(--primary-blue);
+            min-height: auto;
+            padding: 6rem 2rem;
+            color: var(--bg-white);
+        }
+
+        #comparaison .section-number {
+            color: var(--accent-green-light);
+        }
+
+        #comparaison .section-title {
+            color: var(--bg-white);
+        }
+
+        .comparison-columns {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-columns {
+                grid-template-columns: 1fr;
+            }
+            .arrow-center {
+                transform: rotate(90deg);
+            }
+        }
+
+        .ref-column {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .ref-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ref-header.danger {
+            background: rgba(245, 124, 0, 0.2);
+        }
+
+        .ref-header.success {
+            background: rgba(0, 166, 81, 0.2);
+        }
+
+        .ref-count {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .ref-header.danger .ref-count {
+            background: var(--accent-orange);
+            color: var(--bg-white);
+        }
+
+        .ref-header.success .ref-count {
+            background: var(--accent-green);
+            color: var(--bg-white);
+        }
+
+        .ref-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .ref-header p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .ref-list {
+            list-style: none;
+            padding: 1rem;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .ref-list li {
+            padding: 0.6rem 0.75rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ref-list li.will-split {
+            background: rgba(245, 124, 0, 0.25);
+            color: #ffb74d;
+        }
+
+        .split-badge {
+            font-size: 0.7rem;
+            background: var(--accent-orange);
+            color: var(--bg-white);
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .ref-list li.is-new.split {
+            background: rgba(0, 166, 81, 0.2);
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .ref-list li.is-new.added {
+            background: rgba(0, 200, 83, 0.25);
+            border-left: 3px solid var(--accent-green-light);
+        }
+
+        .ref-footer {
+            padding: 1rem 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ref-footer.danger {
+            background: rgba(245, 124, 0, 0.2);
+            color: #ffb74d;
+        }
+
+        .ref-footer.success {
+            background: rgba(0, 166, 81, 0.2);
+            color: var(--accent-green-light);
+        }
+
+        .arrow-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-green);
+            color: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .legend-box {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .legend-color.split {
+            background: var(--accent-green);
+        }
+
+        .legend-color.added {
+            background: var(--accent-green-light);
+        }
+
+        .legend-color.same {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .legend-color.renamed {
+            background: var(--accent-orange);
+        }
+
+        /* Section 4 - Recommandation */
+        #recommandation {
+            background: var(--bg-white);
+        }
+
+        #recommandation .section-number {
+            color: var(--accent-green);
+        }
+
+        .reco-table {
+            background: var(--bg-white);
+            border: 1px solid var(--border-gray);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+
+        .reco-row {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .reco-row:last-child {
+            border-bottom: none;
+        }
+
+        .reco-row.header {
+            background: var(--primary-blue);
+        }
+
+        .reco-row.header .reco-cell {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            color: var(--bg-white);
+        }
+
+        .reco-cell {
+            padding: 1.5rem 2rem;
+            color: var(--text-black);
+        }
+
+        .reco-cell:first-child {
+            border-right: 1px solid var(--border-gray);
+            font-weight: 600;
+        }
+
+        .reco-cell .arrow {
+            color: var(--accent-green);
+            margin: 0 0.5rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.4s forwards;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .badge.green {
+            background: rgba(0, 166, 81, 0.1);
+            border: 2px solid var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .badge.blue {
+            background: rgba(0, 51, 160, 0.1);
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .badge .icon {
+            font-size: 1.2rem;
+        }
+
+        /* Section 5 - Bénéfices */
+        #benefices {
+            background: var(--bg-gray);
+            color: var(--text-black);
+        }
+
+        #benefices .section-number {
+            color: var(--accent-green);
+        }
+
+        .comparison-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .comparison-item {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-white);
+            border-radius: 16px;
+            border: 1px solid var(--border-gray);
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .comparison-item:nth-child(1) { animation-delay: 0.2s; }
+        .comparison-item:nth-child(2) { animation-delay: 0.3s; }
+        .comparison-item:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .comparison-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .before, .after {
+            padding: 1rem;
+        }
+
+        .before .label, .after .label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .before .label {
+            color: var(--accent-orange);
+        }
+
+        .after .label {
+            color: var(--accent-green);
+        }
+
+        .before .question {
+            font-weight: 500;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        .before .answer {
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .after .answer {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .arrow-separator {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--bg-white);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .arrow-separator {
+                transform: rotate(90deg);
+            }
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent-green);
+            color: var(--bg-white);
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.6s forwards;
+        }
+
+        .cta-button:hover {
+            background: #008c46;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 166, 81, 0.3);
+        }
+
+        /* Background decoration */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .bg-decoration.large {
+            width: 600px;
+            height: 600px;
+            background: var(--accent-green);
+            right: -200px;
+            top: -200px;
+        }
+
+        .bg-decoration.medium {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-blue);
+            left: -150px;
+            bottom: -150px;
+        }
+
+        /* Section 2-bis - Données affinées */
+        #donnees-affinees {
+            background: var(--bg-white);
+            min-height: auto;
+            padding: 6rem 2rem;
+        }
+
+        #donnees-affinees .section-number {
+            color: var(--accent-green);
+        }
+
+        .affinage-intro {
+            background: linear-gradient(135deg, rgba(0, 166, 81, 0.08), rgba(0, 166, 81, 0.02));
+            border: 2px solid var(--accent-green);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .affinage-intro-icon {
+            font-size: 3rem;
+        }
+
+        .affinage-intro-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .affinage-intro-text p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .comparison-before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-before-after {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .data-card-compare {
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .data-card-compare.before {
+            background: rgba(245, 124, 0, 0.05);
+            border: 2px solid var(--accent-orange);
+        }
+
+        .data-card-compare.after {
+            background: rgba(0, 166, 81, 0.05);
+            border: 2px solid var(--accent-green);
+        }
+
+        .data-card-compare .card-label {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .data-card-compare.before .card-label {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .data-card-compare.after .card-label {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .data-card-compare .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .data-card-compare .card-icon {
+            font-size: 2rem;
+        }
+
+        .data-card-compare .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .data-card-compare .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .data-card-compare .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .data-card-compare .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .data-card-compare .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .data-card-compare .stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .data-card-compare.before .stat-value.highlight {
+            color: var(--accent-orange);
+        }
+
+        .data-card-compare.after .stat-value.highlight {
+            color: var(--accent-green);
+        }
+
+        .improvement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 166, 81, 0.1);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .partenaires-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .partenaires-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .partenaire-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .partenaire-card .sector-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .partenaire-card .sector-bar {
+            height: 8px;
+            background: var(--border-gray);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.25rem;
+        }
+
+        .partenaire-card .sector-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            border-radius: 4px;
+        }
+
+        .partenaire-card .sector-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .partenaire-card .sector-stats strong {
+            color: var(--primary-blue);
+        }
+
+        .validation-box {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .validation-box h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .validation-box p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .validation-checks {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .validation-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .validation-check .check-icon {
+            width: 24px;
+            height: 24px;
+            background: white;
+            color: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        /* Section 7 - POC */
+        #poc {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+            color: var(--bg-white);
+            min-height: auto;
+            padding: 6rem 2rem;
+        }
+
+        #poc .section-number {
+            color: var(--accent-green-light);
+        }
+
+        #poc .section-title {
+            color: var(--bg-white);
+        }
+
+        .poc-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .poc-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .poc-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .poc-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poc-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .poc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .poc-card.plateforme::before {
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-light));
+        }
+
+        .poc-card.salesforce::before {
+            background: linear-gradient(90deg, #00a1e0, #1798c1);
+        }
+
+        .poc-card-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .poc-card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--bg-white);
+        }
+
+        .poc-card-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .poc-card-description {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .poc-card-instruction {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .poc-card-instruction strong {
+            color: var(--accent-green-light);
+        }
+
+        .poc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .poc-btn.primary {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
+            color: white;
+        }
+
+        .poc-btn.primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,166,81,0.4);
+        }
+
+        .poc-btn.salesforce-btn {
+            background: linear-gradient(135deg, #00a1e0, #1798c1);
+            color: white;
+        }
+
+        .poc-btn.salesforce-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,161,224,0.4);
+        }
+
+        .poc-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .poc-note p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .poc-note strong {
+            color: var(--accent-orange-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--bg-white);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">RÉFÉRENTIEL SECTEURS</div>
+        <ul class="nav-links">
+            <li><a href="#probleme">Problème</a></li>
+            <li><a href="#donnees">Données</a></li>
+            <li><a href="#donnees-affinees">Données affinées</a></li>
+            <li><a href="#comparaison">Comparaison</a></li>
+            <li><a href="#recommandation">Synthèse</a></li>
+            <li><a href="#benefices">Bénéfices</a></li>
+            <li><a href="#poc">POC</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section 1 - Le problème -->
+    <section id="probleme">
+        <div class="bg-decoration large"></div>
+        <div class="container">
+            <p class="section-number">01 — LE PROBLÈME</p>
+            <h1 class="section-title"><span class="highlight-orange">16 secteurs</span> = KPIs impossibles</h1>
+            
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <div class="icon">🏦</div>
+                    <h3>"Banque, Finance, Assurance"</h3>
+                    <p>3 métiers noyés ensemble</p>
+                    <span class="stat">Impossible de distinguer</span>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🏖️</div>
+                    <h3>"Tourisme, Loisirs, Culture, Hôtellerie, Restauration"</h3>
+                    <p>5 métiers, 3 800 freelancers invisibles</p>
+                    <span class="stat">Données inexploitables</span>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">💼</div>
+                    <h3>"Services aux entreprises"</h3>
+                    <p>Fourre-tout : RH, Conseil, Ingénierie, Juridique...</p>
+                    <span class="stat">Aucune granularité</span>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <p>❌ Impossible de répondre à : "Combien de freelancers Banque ?"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2 - Données & Marché -->
+    <section id="donnees">
+        <div class="container">
+            <p class="section-number">02 — DONNÉES & MARCHÉ</p>
+            <h1 class="section-title">Ce que disent <span class="highlight">les données</span></h1>
+            
+            <!-- Sources SI -->
+            <div class="sources-grid">
+                <div class="source-card" style="animation-delay: 0.1s">
+                    <div class="source-header">
+                        <span class="source-icon">🖥️</span>
+                        <h3>Plateforme</h3>
+                    </div>
+                    <div class="source-stat-big">19 817</div>
+                    <div class="source-stat-label">freelancers</div>
+                    <div class="source-details">
+                        <div class="detail-row">
+                            <span>Secteurs actifs</span>
+                            <span class="detail-value">25 / 59</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Secteurs inutilisés</span>
+                            <span class="detail-value warning-text">43%</span>
+                        </div>
+                    </div>
+                    <div class="top3-section">
+                        <div class="top3-title">Top 3 secteurs</div>
+                        <div class="top3-item">
+                            <span class="top3-rank">1</span>
+                            <span class="top3-name">Banque/Finance/Assurance</span>
+                            <span class="top3-value">3 797</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">2</span>
+                            <span class="top3-name">E-commerce</span>
+                            <span class="top3-value">1 670</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">3</span>
+                            <span class="top3-name">Restauration</span>
+                            <span class="top3-value">1 574</span>
+                        </div>
+                    </div>
+                    <div class="source-problem">
+                        <span class="problem-icon">⚠️</span>
+                        E-commerce (1 670 FL) absent de Channel
+                    </div>
+                </div>
+
+                <div class="source-card" style="animation-delay: 0.2s">
+                    <div class="source-header">
+                        <span class="source-icon">☁️</span>
+                        <h3>Salesforce Clients</h3>
+                    </div>
+                    <div class="source-stat-big">6 789</div>
+                    <div class="source-stat-label">clients</div>
+                    <div class="source-details">
+                        <div class="detail-row">
+                            <span>Secteurs utilisés</span>
+                            <span class="detail-value">24</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Classés "Autre"</span>
+                            <span class="detail-value danger-text">75%</span>
+                        </div>
+                    </div>
+                    <div class="top3-section">
+                        <div class="top3-title">Top 3 secteurs</div>
+                        <div class="top3-item danger">
+                            <span class="top3-rank">1</span>
+                            <span class="top3-name">Autre</span>
+                            <span class="top3-value">5 063</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">2</span>
+                            <span class="top3-name">Collectivité territoriale</span>
+                            <span class="top3-value">184</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">3</span>
+                            <span class="top3-name">Banque/Assurance</span>
+                            <span class="top3-value">181</span>
+                        </div>
+                    </div>
+                    <div class="source-problem critical">
+                        <span class="problem-icon">🔴</span>
+                        5 063 clients non qualifiés
+                    </div>
+                </div>
+
+                <div class="source-card" style="animation-delay: 0.3s">
+                    <div class="source-header">
+                        <span class="source-icon">🤝</span>
+                        <h3>SF Partenaires</h3>
+                    </div>
+                    <div class="source-stat-big">13 690</div>
+                    <div class="source-stat-label">partenaires</div>
+                    <div class="source-details">
+                        <div class="detail-row">
+                            <span>Secteur renseigné</span>
+                            <span class="detail-value danger-text">2,3%</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Code NAF exploitable</span>
+                            <span class="detail-value">64%</span>
+                        </div>
+                    </div>
+                    <div class="top3-section">
+                        <div class="top3-title">Top 3 (via NAF)</div>
+                        <div class="top3-item">
+                            <span class="top3-rank">1</span>
+                            <span class="top3-name">ESN/Conseil</span>
+                            <span class="top3-value">7 030</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">2</span>
+                            <span class="top3-name">Industrie/Chimie</span>
+                            <span class="top3-value">576</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">3</span>
+                            <span class="top3-name">Médias/Divertissement</span>
+                            <span class="top3-value">460</span>
+                        </div>
+                    </div>
+                    <div class="source-problem">
+                        <span class="problem-icon">⚠️</span>
+                        97,7% sans secteur direct
+                    </div>
+                </div>
+
+                <div class="source-card" style="animation-delay: 0.4s">
+                    <div class="source-header">
+                        <span class="source-icon">🔗</span>
+                        <h3>Connecteed</h3>
+                    </div>
+                    <div class="source-stat-big">7 150</div>
+                    <div class="source-stat-label">clients</div>
+                    <div class="source-details">
+                        <div class="detail-row">
+                            <span>Codes NAF valides</span>
+                            <span class="detail-value success-text">96,6%</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Top 3 concentration</span>
+                            <span class="detail-value warning-text">68,5%</span>
+                        </div>
+                    </div>
+                    <div class="top3-section">
+                        <div class="top3-title">Top 3 secteurs</div>
+                        <div class="top3-item">
+                            <span class="top3-rank">1</span>
+                            <span class="top3-name">Informatique & Conseil IT</span>
+                            <span class="top3-value">3 194</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">2</span>
+                            <span class="top3-name">Conseil en gestion</span>
+                            <span class="top3-value">1 251</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">3</span>
+                            <span class="top3-name">Ingénierie & Études</span>
+                            <span class="top3-value">452</span>
+                        </div>
+                    </div>
+                    <div class="source-problem">
+                        <span class="problem-icon">⚠️</span>
+                        Dépendance sectorielle critique
+                    </div>
+                </div>
+
+                <div class="source-card" style="animation-delay: 0.5s">
+                    <div class="source-header">
+                        <span class="source-icon">📡</span>
+                        <h3>Nexus</h3>
+                    </div>
+                    <div class="source-stat-big">2 864</div>
+                    <div class="source-stat-label">clients</div>
+                    <div class="source-details">
+                        <div class="detail-row">
+                            <span>Codes NAF valides</span>
+                            <span class="detail-value">70%</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Non renseignés</span>
+                            <span class="detail-value warning-text">29%</span>
+                        </div>
+                    </div>
+                    <div class="top3-section">
+                        <div class="top3-title">Top 3 secteurs</div>
+                        <div class="top3-item">
+                            <span class="top3-rank">1</span>
+                            <span class="top3-name">Informatique & Conseil IT</span>
+                            <span class="top3-value">962</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">2</span>
+                            <span class="top3-name">Conseil en gestion</span>
+                            <span class="top3-value">286</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">3</span>
+                            <span class="top3-name">Ingénierie & Études</span>
+                            <span class="top3-value">152</span>
+                        </div>
+                    </div>
+                    <div class="source-problem">
+                        <span class="problem-icon">⚠️</span>
+                        1/3 non classifiable
+                    </div>
+                </div>
+
+                <div class="source-card" style="animation-delay: 0.6s">
+                    <div class="source-header">
+                        <span class="source-icon">📋</span>
+                        <h3>PUMA</h3>
+                    </div>
+                    <div class="source-stat-big">2 188</div>
+                    <div class="source-stat-label">missions</div>
+                    <div class="source-details">
+                        <div class="detail-row">
+                            <span>Secteurs NAF</span>
+                            <span class="detail-value">102</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Clients uniques</span>
+                            <span class="detail-value">814</span>
+                        </div>
+                    </div>
+                    <div class="top3-section">
+                        <div class="top3-title">Top 3 (inféré)</div>
+                        <div class="top3-item danger">
+                            <span class="top3-rank">1</span>
+                            <span class="top3-name">Non classifiable</span>
+                            <span class="top3-value">59,6%</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">2</span>
+                            <span class="top3-name">Pharma/Santé</span>
+                            <span class="top3-value">12,2%</span>
+                        </div>
+                        <div class="top3-item">
+                            <span class="top3-rank">3</span>
+                            <span class="top3-name">Media/Sport</span>
+                            <span class="top3-value">6,9%</span>
+                        </div>
+                    </div>
+                    <div class="source-problem critical">
+                        <span class="problem-icon">🔴</span>
+                        Aucune donnée sectorielle exploitable
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problèmes majeurs -->
+            <div class="problems-summary">
+                <h3>Problèmes majeurs identifiés</h3>
+                <div class="problems-grid">
+                    <div class="problem-tag">
+                        <span class="tag-icon">❌</span>
+                        75% SF en "Autre"
+                    </div>
+                    <div class="problem-tag">
+                        <span class="tag-icon">❌</span>
+                        5 variantes "Banque"
+                    </div>
+                    <div class="problem-tag">
+                        <span class="tag-icon">❌</span>
+                        E-commerce absent
+                    </div>
+                    <div class="problem-tag">
+                        <span class="tag-icon">❌</span>
+                        Confusion type ≠ secteur
+                    </div>
+                    <div class="problem-tag">
+                        <span class="tag-icon">❌</span>
+                        "Services aux entreprises" fourre-tout
+                    </div>
+                    <div class="problem-tag">
+                        <span class="tag-icon">❌</span>
+                        Industrie absent
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benchmark -->
+            <div class="benchmark-section">
+                <h3>Benchmark marché</h3>
+                <div class="benchmark-bars">
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">Malt</div>
+                        <div class="benchmark-bar-container">
+                            <div class="benchmark-bar" style="width: 100%"></div>
+                        </div>
+                        <div class="benchmark-value">65</div>
+                    </div>
+                    <div class="benchmark-item highlight-bar">
+                        <div class="benchmark-label">Recommandation</div>
+                        <div class="benchmark-bar-container">
+                            <div class="benchmark-bar reco" style="width: 55%"></div>
+                        </div>
+                        <div class="benchmark-value">36</div>
+                    </div>
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">Hello Work</div>
+                        <div class="benchmark-bar-container">
+                            <div class="benchmark-bar" style="width: 40%"></div>
+                        </div>
+                        <div class="benchmark-value">26</div>
+                    </div>
+                    <div class="benchmark-item">
+                        <div class="benchmark-label">Crème de la crème</div>
+                        <div class="benchmark-bar-container">
+                            <div class="benchmark-bar" style="width: 37%"></div>
+                        </div>
+                        <div class="benchmark-value">24</div>
+                    </div>
+                    <div class="benchmark-item danger-bar">
+                        <div class="benchmark-label">Channel (actuel)</div>
+                        <div class="benchmark-bar-container">
+                            <div class="benchmark-bar channel" style="width: 25%"></div>
+                        </div>
+                        <div class="benchmark-value">16</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="market-banner">
+                <p>Channel <strong>(16)</strong> est en dessous du minimum marché <strong>(24-30)</strong> — Recommandation à <strong>36</strong> secteurs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2-bis - Données affinées par le métier -->
+    <section id="donnees-affinees">
+        <div class="container">
+            <p class="section-number">02-BIS — DONNÉES AFFINÉES</p>
+            <h1 class="section-title">Ce que disent les données <span class="highlight-green">avec affinage métier</span></h1>
+            
+            <!-- Introduction affinage -->
+            <div class="affinage-intro">
+                <span class="affinage-intro-icon">🎯</span>
+                <div class="affinage-intro-text">
+                    <h3>Affinage demandé par le métier Channel</h3>
+                    <p>Clients SF → <strong>uniquement actifs</strong> (avec factures) | Partenaires SF → <strong>programme Inop's</strong> avec analyse des descriptions pour identifier les périmètres d'actions des partenaires</p>
+                </div>
+            </div>
+
+            <!-- Comparaison Clients SF -->
+            <h3 style="font-family: 'Montserrat', sans-serif; color: var(--primary-blue); margin-bottom: 1.5rem; font-size: 1.2rem;">☁️ Salesforce Clients — Avant / Après affinage</h3>
+            <div class="comparison-before-after">
+                <div class="data-card-compare before">
+                    <span class="card-label">Avant</span>
+                    <div class="card-header">
+                        <span class="card-icon">☁️</span>
+                        <div>
+                            <div class="card-title">SF Clients (tous)</div>
+                            <div class="card-subtitle">Base complète</div>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total clients</span>
+                        <span class="stat-value">6 789</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Classés "Autre"</span>
+                        <span class="stat-value highlight">75%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Données exploitables</span>
+                        <span class="stat-value highlight">25%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Top 1</span>
+                        <span class="stat-value highlight">"Autre" (5 063)</span>
+                    </div>
+                </div>
+
+                <div class="data-card-compare after">
+                    <span class="card-label">Après</span>
+                    <div class="card-header">
+                        <span class="card-icon">☁️</span>
+                        <div>
+                            <div class="card-title">SF Clients Actifs</div>
+                            <div class="card-subtitle">Uniquement avec factures</div>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total clients actifs</span>
+                        <span class="stat-value">912</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Non renseigné + "Autre"</span>
+                        <span class="stat-value highlight">34,9%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Données exploitables</span>
+                        <span class="stat-value highlight">65,1%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Top 1</span>
+                        <span class="stat-value highlight">Collectivité (79)</span>
+                    </div>
+                    <div class="improvement-badge">
+                        <span>📈</span>
+                        <span>+40 pts de données exploitables</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 10 Clients Actifs -->
+            <div class="source-card" style="margin-bottom: 3rem; animation: none; opacity: 1; transform: none;">
+                <div class="source-header">
+                    <span class="source-icon">📊</span>
+                    <h3>Top 10 — SF Clients Actifs</h3>
+                </div>
+                <div class="top3-section" style="background: var(--bg-white);">
+                    <div class="top3-item">
+                        <span class="top3-rank">1</span>
+                        <span class="top3-name">Collectivité territoriale</span>
+                        <span class="top3-value">79 (8,7%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">2</span>
+                        <span class="top3-name">Banque/Assurance</span>
+                        <span class="top3-value">60 (6,6%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">3</span>
+                        <span class="top3-name">État/Ministère</span>
+                        <span class="top3-value">53 (5,8%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">4</span>
+                        <span class="top3-name">Énergie/Environnement</span>
+                        <span class="top3-value">48 (5,3%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">5</span>
+                        <span class="top3-name">Services publics</span>
+                        <span class="top3-value">43 (4,7%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">6</span>
+                        <span class="top3-name">Santé/Pharma</span>
+                        <span class="top3-value">43 (4,7%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">7</span>
+                        <span class="top3-name">Social</span>
+                        <span class="top3-value">38 (4,2%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">8</span>
+                        <span class="top3-name">Enseignement</span>
+                        <span class="top3-value">31 (3,4%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">9</span>
+                        <span class="top3-name">Mairie</span>
+                        <span class="top3-value">30 (3,3%)</span>
+                    </div>
+                    <div class="top3-item">
+                        <span class="top3-rank">10</span>
+                        <span class="top3-name">Industrie/Chimie</span>
+                        <span class="top3-value">25 (2,7%)</span>
+                    </div>
+                </div>
+                <div class="source-problem" style="background: rgba(0, 166, 81, 0.1); color: var(--accent-green);">
+                    <span class="problem-icon">✓</span>
+                    Tous les secteurs couverts par la proposition 36
+                </div>
+            </div>
+
+            <!-- Comparaison Partenaires SF -->
+            <h3 style="font-family: 'Montserrat', sans-serif; color: var(--primary-blue); margin-bottom: 1.5rem; font-size: 1.2rem;">🤝 Salesforce Partenaires — Avant / Après affinage</h3>
+            <div class="comparison-before-after">
+                <div class="data-card-compare before">
+                    <span class="card-label">Avant</span>
+                    <div class="card-header">
+                        <span class="card-icon">🤝</span>
+                        <div>
+                            <div class="card-title">SF Partenaires (tous)</div>
+                            <div class="card-subtitle">Via code NAF</div>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total partenaires</span>
+                        <span class="stat-value">13 690</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Secteur renseigné</span>
+                        <span class="stat-value highlight">2,3%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Top secteur</span>
+                        <span class="stat-value highlight">ESN/Conseil (80%)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Méthode</span>
+                        <span class="stat-value">Code NAF</span>
+                    </div>
+                </div>
+
+                <div class="data-card-compare after">
+                    <span class="card-label">Après</span>
+                    <div class="card-header">
+                        <span class="card-icon">🤝</span>
+                        <div>
+                            <div class="card-title">Partenaires Programme Inop's</div>
+                            <div class="card-subtitle">Via analyse des descriptions</div>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total partenaires</span>
+                        <span class="stat-value">1 411</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Secteur identifié</span>
+                        <span class="stat-value highlight">91,1%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Multi-secteurs</span>
+                        <span class="stat-value highlight">32,6%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Méthode</span>
+                        <span class="stat-value">Description</span>
+                    </div>
+                    <div class="improvement-badge">
+                        <span>📈</span>
+                        <span>+88,8 pts d'identification</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top secteurs partenaires -->
+            <h3 style="font-family: 'Montserrat', sans-serif; color: var(--primary-blue); margin-bottom: 1.5rem; font-size: 1.1rem;">📊 Top 10 secteurs d'intervention des partenaires Inop's</h3>
+            <div class="partenaires-grid">
+                <div class="partenaire-card">
+                    <div class="sector-name">1. Conseil & Audit</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 100%"></div></div>
+                    <div class="sector-stats"><span><strong>736</strong> partenaires</span><span>52,2%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">2. Informatique & Digital</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 90%"></div></div>
+                    <div class="sector-stats"><span><strong>660</strong> partenaires</span><span>46,8%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">3. Énergie</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 63%"></div></div>
+                    <div class="sector-stats"><span><strong>462</strong> partenaires</span><span>32,7%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">4. Industrie</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 46%"></div></div>
+                    <div class="sector-stats"><span><strong>337</strong> partenaires</span><span>23,9%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">5. Télécommunications</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 44%"></div></div>
+                    <div class="sector-stats"><span><strong>324</strong> partenaires</span><span>23,0%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">6. Ingénierie & R&D</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 38%"></div></div>
+                    <div class="sector-stats"><span><strong>282</strong> partenaires</span><span>20,0%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">7. Administrations publiques</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 38%"></div></div>
+                    <div class="sector-stats"><span><strong>278</strong> partenaires</span><span>19,7%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">8. RSE / Développement durable</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 28%"></div></div>
+                    <div class="sector-stats"><span><strong>208</strong> partenaires</span><span>14,7%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">9. Transport</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 27%"></div></div>
+                    <div class="sector-stats"><span><strong>198</strong> partenaires</span><span>14,0%</span></div>
+                </div>
+                <div class="partenaire-card">
+                    <div class="sector-name">10. Banque / Finance / Assurance</div>
+                    <div class="sector-bar"><div class="sector-bar-fill" style="width: 55%"></div></div>
+                    <div class="sector-stats"><span><strong>402</strong> partenaires</span><span>28,5%</span></div>
+                </div>
+            </div>
+
+            <!-- Validation finale -->
+            <div class="validation-box">
+                <h3>✓ Validation proposition 36 secteurs</h3>
+                <p>Les données affinées confirment que la proposition couvre 100% des besoins identifiés</p>
+                <div class="validation-checks">
+                    <div class="validation-check">
+                        <span class="check-icon">✓</span>
+                        <span>Clients SF Actifs : 100% couverts</span>
+                    </div>
+                    <div class="validation-check">
+                        <span class="check-icon">✓</span>
+                        <span>Partenaires Inop's : 100% couverts</span>
+                    </div>
+                    <div class="validation-check">
+                        <span class="check-icon">✓</span>
+                        <span>Aucun ajout nécessaire</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 - Comparaison Channel vs Préconisation -->
+    <section id="comparaison">
+        <div class="container">
+            <p class="section-number">04 — COMPARAISON</p>
+            <h1 class="section-title">Channel <span class="highlight-orange">(16)</span> vs Préconisation <span class="highlight-green">(36)</span></h1>
+            
+            <div class="comparison-columns">
+                <!-- Colonne Channel -->
+                <div class="ref-column channel-col">
+                    <div class="ref-header danger">
+                        <span class="ref-count">16</span>
+                        <div>
+                            <h3>Référentiel Channel</h3>
+                            <p>Actuel — trop agrégé</p>
+                        </div>
+                    </div>
+                    <ul class="ref-list">
+                        <li>Administrations publiques</li>
+                        <li>Assurance</li>
+                        <li class="will-split">Banque, Finance <span class="split-badge">→ 3</span></li>
+                        <li>Défense</li>
+                        <li>Distribution, Commerce</li>
+                        <li>Energie</li>
+                        <li class="will-split">Immobilier, BTP <span class="split-badge">→ 2</span></li>
+                        <li>Luxe</li>
+                        <li>Média et Communication</li>
+                        <li>Pharmaceutique et biotechnologies</li>
+                        <li>Programmation, conseil et autres activités informatiques</li>
+                        <li class="will-split">Santé, Action Sociale et Enseignement <span class="split-badge">→ 3</span></li>
+                        <li class="will-split">Services aux entreprises <span class="split-badge">→ 5</span></li>
+                        <li>Télécommunications</li>
+                        <li class="will-split">Tourisme, Loisirs, Culture, Hotellerie, Restauration <span class="split-badge">→ 3</span></li>
+                        <li>Transport</li>
+                    </ul>
+                    <div class="ref-footer danger">
+                        <span>❌ 6 secteurs majeurs absents</span>
+                    </div>
+                </div>
+
+                <!-- Flèche centrale -->
+                <div class="arrow-center">
+                    <div class="arrow-icon">→</div>
+                </div>
+
+                <!-- Colonne Préconisation -->
+                <div class="ref-column reco-col">
+                    <div class="ref-header success">
+                        <span class="ref-count">36</span>
+                        <div>
+                            <h3>Préconisation</h3>
+                            <p>Cible — granularité optimale</p>
+                        </div>
+                    </div>
+                    <ul class="ref-list">
+                        <li class="is-new split">Action sociale</li>
+                        <li>Administrations publiques</li>
+                        <li class="is-new added">Aérospatial</li>
+                        <li class="is-new added">Agroalimentaire</li>
+                        <li class="is-new split">Assurance</li>
+                        <li class="is-new split">Banque</li>
+                        <li class="is-new split">BTP & Construction</li>
+                        <li class="is-new added">Comptabilité</li>
+                        <li class="is-new split">Conseil & Audit</li>
+                        <li class="is-new split">Culture & Loisirs</li>
+                        <li>Défense</li>
+                        <li>Distribution & Commerce</li>
+                        <li class="is-new added">E-commerce</li>
+                        <li class="is-new added">Édition</li>
+                        <li>Énergie</li>
+                        <li class="is-new split">Enseignement & Formation</li>
+                        <li class="is-new added">Évènementiel</li>
+                        <li class="is-new split">Finance</li>
+                        <li class="is-new split">Immobilier</li>
+                        <li class="is-new added">Industrie</li>
+                        <li>Informatique & Digital</li>
+                        <li class="is-new split">Ingénierie & R&D</li>
+                        <li class="is-new added">Juridique</li>
+                        <li class="is-new added">Logistique</li>
+                        <li>Luxe</li>
+                        <li>Média & Communication</li>
+                        <li class="is-new added">Mode & Cosmétique</li>
+                        <li>Pharma & Biotechnologies</li>
+                        <li class="is-new split">Restauration</li>
+                        <li class="is-new split">RH / Recrutement</li>
+                        <li class="is-new added">RSE / Développement durable</li>
+                        <li class="is-new split">Santé</li>
+                        <li>Télécommunications</li>
+                        <li class="is-new split">Tourisme & Hôtellerie</li>
+                        <li>Transport</li>
+                    </ul>
+                    <div class="ref-footer success">
+                        <span>✓ Couverture 100% des données SI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Légende -->
+            <div class="legend-box">
+                <div class="legend-item">
+                    <span class="legend-color same"></span>
+                    <span>Identique (9)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color split"></span>
+                    <span>Éclaté (14)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color added"></span>
+                    <span>Ajouté (11)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color renamed"></span>
+                    <span>Renommé (1)</span>
+                </div>
+            </div>
+
+            <!-- Synthèse des changements -->
+            <div class="changes-summary" style="margin-top: 2rem; background: rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.15);">
+                <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--bg-white);">Synthèse des changements</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <th style="text-align: left; padding: 0.75rem; color: rgba(255,255,255,0.7);">Type</th>
+                            <th style="text-align: center; padding: 0.75rem; color: rgba(255,255,255,0.7);">Nb</th>
+                            <th style="text-align: left; padding: 0.75rem; color: rgba(255,255,255,0.7);">Détail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 0.75rem; color: rgba(255,255,255,0.9);">✅ Identique</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--bg-white);">9</td>
+                            <td style="padding: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.8rem;">Administrations publiques, Pharma & Biotech, Énergie, Transport, Défense, Luxe, Télécommunications, Média & Communication, Distribution & Commerce</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 0.75rem; color: var(--accent-green-light);">🔀 Éclaté</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent-green-light);">14</td>
+                            <td style="padding: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.8rem;">5 secteurs Channel éclatés en 14 secteurs</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 0.75rem; color: var(--accent-green-light);">➕ Ajouté</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent-green-light);">11</td>
+                            <td style="padding: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.8rem;">Logistique, Aérospatial, Mode & Cosmétique, E-commerce, Industrie, Agroalimentaire, Événementiel, Édition, Juridique, RSE, Comptabilité</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 0.75rem; color: var(--accent-orange);">✏️ Renommé</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent-orange);">1</td>
+                            <td style="padding: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.8rem;">"Programmation, conseil et autres activités informatiques" → "Informatique & Digital"</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem; color: #ffb74d;">❌ Supprimé</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #ffb74d;">1</td>
+                            <td style="padding: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.8rem;">"Services aux entreprises" supprimé (éclaté en 5 : RH, Conseil, Ingénierie, Juridique, Comptabilité)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5 - Recommandation -->
+    <section id="recommandation">
+        <div class="bg-decoration medium"></div>
+        <div class="container">
+            <p class="section-number">05 — SYNTHÈSE</p>
+            <h1 class="section-title"><span class="highlight-green">36 secteurs</span> : le bon équilibre</h1>
+            
+            <div class="reco-table">
+                <div class="reco-row header">
+                    <div class="reco-cell">Ce qui change</div>
+                    <div class="reco-cell">Pourquoi</div>
+                </div>
+                <div class="reco-row">
+                    <div class="reco-cell">5 macro-secteurs <span class="arrow">→</span> 15</div>
+                    <div class="reco-cell">KPIs par métier (Banque ≠ Assurance ≠ Finance)</div>
+                </div>
+                <div class="reco-row">
+                    <div class="reco-cell">11 secteurs ajoutés</div>
+                    <div class="reco-cell">E-commerce, Industrie, Agroalimentaire, Évènementiel, Édition, RSE...</div>
+                </div>
+                <div class="reco-row">
+                    <div class="reco-cell">"Services aux entreprises" <span class="arrow">→</span> 5</div>
+                    <div class="reco-cell">RH, Conseil & Audit, Ingénierie & R&D, Juridique, Comptabilité</div>
+                </div>
+            </div>
+
+            <div class="badges">
+                <div class="badge blue">
+                    <span class="icon">✓</span>
+                    100% des données SI mappables
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6 - Bénéfices -->
+    <section id="benefices">
+        <div class="container">
+            <p class="section-number">06 — BÉNÉFICES</p>
+            <h1 class="section-title">Avant <span class="highlight">/ Après</span></h1>
+            
+            <div class="comparison-list">
+                <div class="comparison-item">
+                    <div class="before">
+                        <div class="label">Avant (16)</div>
+                        <div class="question">"Combien de FL Banque ?"</div>
+                        <div class="answer">→ Impossible</div>
+                    </div>
+                    <div class="arrow-separator">→</div>
+                    <div class="after">
+                        <div class="label">Après (36)</div>
+                        <div class="answer">1 081 FL ✓</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="before">
+                        <div class="label">Avant (16)</div>
+                        <div class="question">"Top secteurs E-commerce ?"</div>
+                        <div class="answer">→ Absent</div>
+                    </div>
+                    <div class="arrow-separator">→</div>
+                    <div class="after">
+                        <div class="label">Après (36)</div>
+                        <div class="answer">1 670 FL ✓</div>
+                    </div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="before">
+                        <div class="label">Avant (16)</div>
+                        <div class="question">"Conseil vs Industrie ?"</div>
+                        <div class="answer">→ Noyé</div>
+                    </div>
+                    <div class="arrow-separator">→</div>
+                    <div class="after">
+                        <div class="label">Après (36)</div>
+                        <div class="answer">Segmentation claire ✓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7 - POC -->
+    <section id="poc">
+        <div class="container">
+            <p class="section-number">07 — POC INTERACTIF</p>
+            <h1 class="section-title">Testez le nouveau <span class="highlight-green">référentiel</span></h1>
+            
+            <p class="poc-intro">
+                Mettez-vous dans la peau d'un utilisateur et testez l'expérience de saisie des secteurs d'activité avec le nouveau référentiel à 35 secteurs.
+            </p>
+
+            <div class="poc-cards">
+                <!-- Card Plateforme Freelance -->
+                <div class="poc-card plateforme">
+                    <div class="poc-card-icon">🖥️</div>
+                    <div class="poc-card-title">Plateforme Freelance</div>
+                    <div class="poc-card-subtitle">Expérience Freelance</div>
+                    <div class="poc-card-description">
+                        Mettez-vous dans la peau d'un freelance et saisissez vos secteurs d'activité via l'autocomplétion.
+                    </div>
+                    <div class="poc-card-instruction">
+                        👆 Cliquez sur le bouton <strong>"AJOUTER DES SECTEURS"</strong> pour ouvrir la modal de saisie
+                    </div>
+                    <a href="poc-plateforme-freelance.html" target="_blank" class="poc-btn primary">
+                        <span>🚀</span>
+                        Tester la Plateforme
+                    </a>
+                </div>
+
+                <!-- Card Salesforce -->
+                <div class="poc-card salesforce">
+                    <div class="poc-card-icon">☁️</div>
+                    <div class="poc-card-title">Salesforce Client</div>
+                    <div class="poc-card-subtitle">Expérience Commerciale</div>
+                    <div class="poc-card-description">
+                        Simulez la saisie d'un secteur d'activité sur un compte client en sélectionnant une valeur dans la picklist.
+                    </div>
+                    <div class="poc-card-instruction">
+                        👆 Cliquez sur le champ <strong>"Secteur d'activité"</strong> pour dérouler la liste des 35 secteurs
+                    </div>
+                    <a href="poc-salesforce-client.html" target="_blank" class="poc-btn salesforce-btn">
+                        <span>☁️</span>
+                        Tester Salesforce
+                    </a>
+                </div>
+            </div>
+
+            <div class="poc-note">
+                <p>⚠️ <strong>Note :</strong> Ces maquettes sont des POC statiques pour validation métier. Les données et interactions sont simulées.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Référentiel Secteurs d'activité — Cadrage fonctionnel</p>
+    </footer>
+
+</body>
+</html>
