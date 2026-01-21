@@ -4,7 +4,7 @@ Présentation interactive du projet de refonte du référentiel des secteurs d'a
 
 ## 🎯 Objectif
 
-Passer de **16 secteurs** (référentiel Channel actuel) à **35 secteurs** pour permettre des KPIs métier exploitables.
+Passer de **16 secteurs** (référentiel Channel actuel) à **36 secteurs** pour permettre des KPIs métier exploitables.
 
 ## 📁 Structure du projet
 
@@ -40,47 +40,48 @@ Passer de **16 secteurs** (référentiel Channel actuel) à **35 secteurs** pour
 |------|:--:|--------|
 | ✅ Identique | 9 | Administrations publiques, Pharma & Biotech, Énergie, Transport, Défense, Luxe, Télécommunications, Média & Communication, Distribution & Commerce |
 | 🔀 Éclaté | 14 | 5 secteurs Channel éclatés en 14 secteurs |
-| ➕ Ajouté | 11 | Logistique, Aérospatial, Mode & Cosmétique, E-commerce, Industrie, Agroalimentaire, Événementiel, Édition, Juridique, RSE, Comptabilité |
+| ➕ Ajouté | 12 | Logistique, Aérospatial, Mode & Cosmétique, E-commerce, Industrie, Agroalimentaire, Événementiel, Édition, Juridique, RSE, Comptabilité, Association |
 | ✏️ Renommé | 1 | "Programmation, conseil..." → "Informatique & Digital" |
 | ❌ Supprimé | 1 | "Services aux entreprises" éclaté en 5 |
 
-## 🏷️ Liste des 35 secteurs (ordre alphabétique)
+## 🏷️ Liste des 36 secteurs (ordre alphabétique)
 
 1. Action sociale
 2. Administrations publiques
 3. Aérospatial
-4. Agroalimentaire
-5. Assurance
-6. Banque
-7. BTP & Construction
-8. Comptabilité
-9. Conseil & Audit
-10. Culture & Loisirs
-11. Défense
-12. Distribution & Commerce
-13. E-commerce
-14. Édition
-15. Énergie
-16. Enseignement & Formation
-17. Évènementiel
-18. Finance
-19. Immobilier
-20. Industrie
-21. Informatique & Digital
-22. Ingénierie & R&D
-23. Juridique
-24. Logistique
-25. Luxe
-26. Média & Communication
-27. Mode & Cosmétique
-28. Pharma & Biotechnologies
-29. Restauration
-30. RH / Recrutement
-31. RSE / Développement durable
-32. Santé
-33. Télécommunications
-34. Tourisme & Hôtellerie
-35. Transport
+4. Association
+5. Agroalimentaire
+6. Assurance
+7. Banque
+8. BTP & Construction
+9. Comptabilité
+10. Conseil & Audit
+11. Culture & Loisirs
+12. Défense
+13. Distribution & Commerce
+14. E-commerce
+15. Édition
+16. Énergie
+17. Enseignement & Formation
+18. Évènementiel
+19. Finance
+20. Immobilier
+21. Industrie
+22. Informatique & Digital
+23. Ingénierie & R&D
+24. Juridique
+25. Logistique
+26. Luxe
+27. Média & Communication
+28. Mode & Cosmétique
+29. Pharma & Biotechnologies
+30. Restauration
+31. RH / Recrutement
+32. RSE / Développement durable
+33. Santé
+34. Télécommunications
+35. Tourisme & Hôtellerie
+36. Transport
 
 ## 🛠️ Technologies
 
@@ -96,5 +97,3 @@ Passer de **16 secteurs** (référentiel Channel actuel) à **35 secteurs** pour
 - **Date** : Janvier 2025
 
 ---
-
-*Freelance.com — Product Team*
