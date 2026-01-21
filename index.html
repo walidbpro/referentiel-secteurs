@@ -2321,23 +2321,65 @@
             <p class="section-number">05 — SYNTHÈSE</p>
             <h1 class="section-title"><span class="highlight-green">35 secteurs</span> : le bon équilibre</h1>
             
-            <div class="reco-table">
-                <div class="reco-row header">
-                    <div class="reco-cell">Ce qui change</div>
-                    <div class="reco-cell">Pourquoi</div>
-                </div>
-                <div class="reco-row">
-                    <div class="reco-cell">5 macro-secteurs <span class="arrow">→</span> 15</div>
-                    <div class="reco-cell">KPIs par métier (Banque ≠ Assurance ≠ Finance)</div>
-                </div>
-                <div class="reco-row">
-                    <div class="reco-cell">11 secteurs ajoutés</div>
-                    <div class="reco-cell">E-commerce, Industrie, Agroalimentaire, Évènementiel, Édition, RSE...</div>
-                </div>
-                <div class="reco-row">
-                    <div class="reco-cell">"Services aux entreprises" <span class="arrow">→</span> 5</div>
-                    <div class="reco-cell">RH, Conseil & Audit, Ingénierie & R&D, Juridique, Comptabilité</div>
-                </div>
+            <!-- Tableau récap complet -->
+            <div class="recap-table-container" style="overflow-x: auto; margin-bottom: 2rem; opacity: 0; transform: translateY(30px); animation: fadeInUp 0.6s ease 0.2s forwards;">
+                <table style="width: 100%; border-collapse: collapse; background: var(--bg-white); border: 1px solid var(--border-gray); border-radius: 16px; overflow: hidden; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="background: var(--primary-blue);">
+                            <th style="padding: 1rem 1.25rem; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--bg-white); border-right: 1px solid rgba(255,255,255,0.2);"></th>
+                            <th style="padding: 1rem 1.25rem; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--bg-white); border-right: 1px solid rgba(255,255,255,0.2);">Plateforme</th>
+                            <th style="padding: 1rem 1.25rem; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--bg-white); border-right: 1px solid rgba(255,255,255,0.2);">SF Clients actifs</th>
+                            <th style="padding: 1rem 1.25rem; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--bg-white); border-right: 1px solid rgba(255,255,255,0.2);">Programme Partenaires</th>
+                            <th style="padding: 1rem 1.25rem; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--bg-white); border-right: 1px solid rgba(255,255,255,0.2);">PUMA</th>
+                            <th style="padding: 1rem 1.25rem; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--bg-white);">Nexus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border-gray);">
+                            <td style="padding: 1rem 1.25rem; font-weight: 600; color: var(--primary-blue); border-right: 1px solid var(--border-gray);">Couverture</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">96%</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">100%</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">100%</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">~89%</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center;">40%</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-gray);">
+                            <td style="padding: 1rem 1.25rem; font-weight: 600; color: var(--primary-blue); border-right: 1px solid var(--border-gray);">Non mappable</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">Vente (fonction)</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">-</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">-</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">ONG/International</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center;">20%</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-gray);">
+                            <td style="padding: 1rem 1.25rem; font-weight: 600; color: var(--primary-blue); border-right: 1px solid var(--border-gray);">Fiabilité source</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);"><span style="color: var(--accent-green); font-size: 1.2rem;">✅</span></td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);"><span style="color: var(--accent-green); font-size: 1.2rem;">✅</span></td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);"><span style="color: var(--accent-green); font-size: 1.2rem;">✅</span></td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);"><span style="color: #E53935; font-size: 1.2rem;">❌</span></td>
+                            <td style="padding: 1rem 1.25rem; text-align: center;"><span style="color: #E53935; font-size: 1.2rem;">❌</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-gray);">
+                            <td style="padding: 1rem 1.25rem; font-weight: 600; color: var(--primary-blue); border-right: 1px solid var(--border-gray);">Base de comparaison</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">Données réelles</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">Données réelles</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">Données réelles</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray);">Données déduites</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center;">Données réelles</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem 1.25rem; font-weight: 600; color: var(--primary-blue); border-right: 1px solid var(--border-gray); vertical-align: top;">Conclusion</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray); color: var(--accent-green); font-weight: 600;">Cohérent</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray); color: var(--accent-green); font-weight: 600;">Cohérent</td>
+                            <td style="padding: 1rem 1.25rem; text-align: center; border-right: 1px solid var(--border-gray); color: var(--accent-green); font-weight: 600;">Cohérent</td>
+                            <td style="padding: 1rem 1.25rem; text-align: left; border-right: 1px solid var(--border-gray); font-size: 0.8rem; line-height: 1.4;"><strong style="color: #E53935;">Non exploitable</strong> : aucun champ secteur natif, classification déduite du nom client sur 14% de la base (115/814), 86% inclassables — mapping indicatif uniquement</td>
+                            <td style="padding: 1rem 1.25rem; text-align: left; font-size: 0.8rem; line-height: 1.4;"><span style="color: var(--text-gray);">Hors périmètre : référentiel d'activités freelances, pas de secteurs clients</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-gray); font-style: italic;">
+                    <strong>Note méthodologique :</strong> Les comparaisons portent sur les valeurs sectorielles réellement attribuées à des clients/partenaires/freelances, pas sur l'ensemble des valeurs disponibles dans les picklists. Une valeur présente dans un référentiel mais jamais utilisée n'est pas prise en compte.
+                </p>
             </div>
 
             <div class="badges">
